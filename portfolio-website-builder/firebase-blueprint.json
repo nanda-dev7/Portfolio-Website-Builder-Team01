@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user profile information and settings.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "description": "The user's full name." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "avatarUrl": { "type": "string", "description": "URL to the user's profile picture." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user account was created." }
+      },
+      "required": ["fullName", "email", "createdAt"]
+    },
+    "Portfolio": {
+      "title": "Portfolio",
+      "description": "Represents a user's portfolio website.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who owns this portfolio." },
+        "title": { "type": "string", "description": "The title of the portfolio." },
+        "slug": { "type": "string", "description": "The unique URL slug for the portfolio." },
+        "theme": { "type": "object", "description": "Theme configuration." },
+        "sections": { "type": "array", "description": "List of portfolio sections." },
+        "seo": { "type": "object", "description": "SEO configuration." },
+        "status": { "type": "string", "enum": ["draft", "published"], "description": "The publication status." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the portfolio was created." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "When the portfolio was last updated." }
+      },
+      "required": ["userId", "title", "slug", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document."
+    },
+    "/portfolios/{portfolioId}": {
+      "schema": "Portfolio",
+      "description": "Portfolio document."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "NovaFolio - Premium Portfolio Builder",
+  "description": "A professional, modern portfolio website builder with AI-powered content suggestions, drag-and-drop editing, and premium templates.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
